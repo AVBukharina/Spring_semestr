@@ -9,7 +9,7 @@ import ru.itis.springbootdemo.models.User;
 import java.util.Collection;
 import java.util.Collections;
 
-
+// описываю информацию о пользователе, его права
 public class UserDetailsImpl implements UserDetails {
 
     private User user;

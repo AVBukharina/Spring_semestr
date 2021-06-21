@@ -27,6 +27,7 @@ public class FileStorageServiceImpl implements FileStorageService {
 
     @Override
     public String saveFile(MultipartFile uploadingFile) {
+        //случайное название файла, которое состоит из случайного набора символов и расширения исходного файла
         String storageName = UUID.randomUUID().toString() + "."
                 + FilenameUtils.getExtension(uploadingFile.getOriginalFilename());
 
@@ -35,8 +36,11 @@ public class FileStorageServiceImpl implements FileStorageService {
                 .originalFileName(uploadingFile.getOriginalFilename())
                 .storageFileName(storageName)
                 .size(uploadingFile.getSize())
+                //полный путь к файлу на диске
                 .url(storagePath + "\\" + storageName)
                 .build();
+
+        //сохраняем наш файл на диске
         try {
             Files.copy(uploadingFile.getInputStream(), Paths.get(storagePath, storageName));
         } catch (IOException e) {

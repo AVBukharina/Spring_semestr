@@ -10,7 +10,7 @@ import ru.itis.springbootdemo.repositories.UsersRepository;
 
 import java.util.Optional;
 
-
+// сервис, который при помощи почти, достает юзера и оборачивает в юзер детейлс и отправляет...
 @Component("customUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 

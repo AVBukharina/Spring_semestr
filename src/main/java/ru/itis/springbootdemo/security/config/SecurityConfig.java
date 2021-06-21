@@ -28,7 +28,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/css/**", "/image/**", "/js/**").permitAll()
                 .antMatchers("/signUp").permitAll()
+                .antMatchers("/aboutUs").permitAll()
+                .antMatchers("/main").permitAll()
+                .antMatchers("/shop").permitAll()
+                .antMatchers("/blog").permitAll()
+                .antMatchers("/works").permitAll()
+                .antMatchers("/contact").permitAll()
                 .antMatchers("/thanks").permitAll()
                 .antMatchers("/files/**").permitAll()
                 .antMatchers("/confirm/{confirm-code}").permitAll()

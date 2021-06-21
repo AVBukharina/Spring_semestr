@@ -23,6 +23,7 @@ public class FilesController {
         return "file_upload_page";
     }
 
+    //сохраняем файл на сервере, и возвращаем url, по которому мы можем обратиться к файлу
     @PostMapping("/files")
     public ResponseEntity<String> fileUpload(@RequestParam("file")MultipartFile file){
         String filePath = fileStorageService.saveFile(file);
@@ -30,6 +31,7 @@ public class FilesController {
                 .body(filePath);
     }
 
+    //.+ регулярное выражение для расширения файла
     @GetMapping("/files/{file-name:.+}")
     public void getFile(@PathVariable("file-name") String fileName, HttpServletResponse response){
         fileStorageService.writeFileToResponse(fileName, response);
